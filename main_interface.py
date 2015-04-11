@@ -1,11 +1,14 @@
 __author__ = 'thor'
 
 
+from params import analyzer_info
 
 
 class MainInterface(object):
-    def __init(self):
-        from misc.analysis_dashboard.params import analyzer_info
+    """
+    Class that is meant to manage the selection of an analyzer.
+    """
+    def __init__(self, analyzer_info=analyzer_info):
         self.analyzer_info = analyzer_info
         self.analyzer = None
 
@@ -14,5 +17,7 @@ class MainInterface(object):
 
     def set_analyzer(self, analyzer_name):
         _analyzer = self.analyzer_info[analyzer_name]
-        self.analyzer = _analyzer['constructor'](**_analyzer['arguments'])
+        self.analyzer = _analyzer['constructor']()
+
+
 
